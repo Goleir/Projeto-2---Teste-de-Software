@@ -9,11 +9,13 @@ import java.util.ArrayList;
 public class Estacionamento {
     
     private ArrayList<Funcionario> listaFuncionarios;
-    private Integer quantidadeVagas;
+    private ArrayList<Cliente> listaClientes;
+    private Integer vagasLivre;
 
     public Estacionamento(){
         listaFuncionarios = new ArrayList<Funcionario>();
-        
+        listaClientes = new ArrayList<Cliente>();
+        vagasLivre = 300;        
     }
     
     public void cadastraFuncionario(String nome, Integer cpf) {
@@ -23,6 +25,23 @@ public class Estacionamento {
 
     public Integer getQtdeFuncionariosCadastrados() {
         return listaFuncionarios.size();
+    }
+    
+    public Integer getQtdeClientes(){
+        return listaClientes.size();
+    }
+
+    public void registraEntrada(String placa, Integer hora, String tipoCliente) {
+        
+        if(vagasLivre == 0){
+            System.out.println("Estacionamento Lotado!\n\n");
+        }
+        else{
+            Cliente cliente = new Cliente(placa, hora, tipoCliente);
+            listaClientes.add(cliente);
+          
+        }       
+        
     }
     
 }

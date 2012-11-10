@@ -8,11 +8,33 @@ package modelos;
  *
  * @author 30973491
  */
-public abstract class Cliente {
+public class Cliente {
     
-    public Integer placa;
-    public long horaEntrada;
+    private final String placa;
+    private final Integer horarioEntrada;
+    private final String tipoCliente;
+
+    public Cliente(String placa, Integer horarioEntrada, String tipoCliente) {
+        this.placa = placa;
+        this.horarioEntrada = horarioEntrada;
+        this.tipoCliente = tipoCliente;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public Integer getHorarioEntrada() {
+        return horarioEntrada;
+    }
+
+    public String getTipoCliente() {
+        return tipoCliente;
+    }
+
     
-    public 
+    
+    
+        
     
 }

@@ -27,13 +27,21 @@ public class EstacionamentoTeste {
     }
     @Test
     public void TesteDeRegistroDeEntrada(){
+        Estacionamento parking = new Estacionamento();
+        
+        parking.cadastraFuncionario("Fernando", 12345);
+        parking.registraEntrada("EJA-8312", Integer.valueOf(12), "Carro");
+        parking.registraEntrada("EJB-3131", Integer.valueOf(14), "Moto");
+        
+        Assert.assertEquals(Integer.valueOf(2), parking.getQtdeClientes());
+        
     }
     
-    @Test
+    //@Test
     public void TesteDeRegistroDeSaida(){
     }
     
-    @Test
+    //@Test
     public void TesteDeControleDeSituacaoDeVagas(){
     }
     
