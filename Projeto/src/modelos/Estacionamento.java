@@ -39,6 +39,7 @@ public class Estacionamento {
         else{
             Cliente cliente = new Cliente(placa, hora, tipoCliente);
             listaClientes.add(cliente);
+            vagasLivre--;
           
         }       
         
@@ -47,7 +48,18 @@ public class Estacionamento {
     public Integer getVagasLivre() {
         return vagasLivre;
     }
+
+    public void cadastraGerente(String nome, Integer cpf) {
+                listaFuncionarios.add(new Gerente(nome, cpf));
     
+    }
+
+    public void cadastraCaixa(String nome, Integer cpf) {
+        listaFuncionarios.add(new Caixa(nome, cpf));
+    }
     
-    
+    public void cadastraManobrista(String nome, Integer cpf){
+        listaFuncionarios.add(new Manobrista(nome,cpf));
+    }
+      
 }

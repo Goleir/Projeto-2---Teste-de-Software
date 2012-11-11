@@ -18,9 +18,9 @@ public class EstacionamentoTeste {
     public void TesteDeCadastroDeFuncionario(){
         
         Estacionamento parking = new Estacionamento();
-        parking.cadastraFuncionario("Fernando", 12345);
-        parking.cadastraFuncionario("Rafinha", 23456);
-        parking.cadastraFuncionario("Caio",34567);
+        parking.cadastraGerente("Fernando", 12345);
+        parking.cadastraCaixa("Rafinha", 23456);
+        parking.cadastraManobrista("Caio",34567);
         
         Assert.assertEquals(Integer.valueOf(3), parking.getQtdeFuncionariosCadastrados());
         
@@ -39,13 +39,19 @@ public class EstacionamentoTeste {
     
     
     public void TesteDeRegistroDeSaida(){
+        Estacionamento parking = new Estacionamento();
+        
+        parking.cadastraCaixa("Fernando", 12345);
+        parking.registraEntrada("EJA-8312", Integer.valueOf(12), "Carro");
+        parking.registraEntrada("EJB-3131", Integer.valueOf(14), "Moto");
+        
     }
     
     //@Test
     public void TesteDeControleDeSituacaoDeVagas(){
         Estacionamento parking = new Estacionamento();
         
-        parking.cadastraFuncionario("Fernando", 12345);
+        parking.cadastraCaixa("Fernando", 12345);
         parking.registraEntrada("EJA-8312", Integer.valueOf(12), "Carro");
         parking.registraEntrada("EJB-3131", Integer.valueOf(14), "Moto");
         
