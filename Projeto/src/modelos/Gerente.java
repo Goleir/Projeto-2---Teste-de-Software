@@ -10,4 +10,6 @@ class Gerente extends Funcionario {
         super(nome, cpf);
     }
     
+   
+    
 }

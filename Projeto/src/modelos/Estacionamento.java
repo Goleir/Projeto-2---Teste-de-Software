@@ -11,15 +11,21 @@ public class Estacionamento {
     private ArrayList<Funcionario> listaFuncionarios;
     private ArrayList<Cliente> listaClientes;
     private Integer vagasLivre;
+    private Integer vagasMoto;
+    private Integer vagasAuto;
+    private Integer vagasDefi;
+    public Gerente gerente;
 
     public Estacionamento(){
         listaFuncionarios = new ArrayList<Funcionario>();
         listaClientes = new ArrayList<Cliente>();
-        vagasLivre = 300;        
+        vagasMoto = 20;
+        vagasDefi = 30;
+        vagasAuto = 250;
+        vagasLivre = vagasAuto + vagasDefi + vagasMoto;        
     }
     
-    public void cadastraFuncionario(String nome, Integer cpf) {
-        Funcionario func = new Funcionario(nome, cpf);
+    public void cadastraFuncionario(Funcionario func) {
         listaFuncionarios.add(func);
     }
 
@@ -45,21 +51,44 @@ public class Estacionamento {
         
     }
 
+   
+    
+    
     public Integer getVagasLivre() {
         return vagasLivre;
     }
 
     public void cadastraGerente(String nome, Integer cpf) {
-                listaFuncionarios.add(new Gerente(nome, cpf));
+        
+        
+        Gerente gerente = new Gerente(nome, cpf);
+        listaFuncionarios.add(gerente);
     
+        if(this.gerente == null){
+            this.gerente = gerente;
+        }
+             
+        
     }
-
+    
     public void cadastraCaixa(String nome, Integer cpf) {
         listaFuncionarios.add(new Caixa(nome, cpf));
     }
     
     public void cadastraManobrista(String nome, Integer cpf){
         listaFuncionarios.add(new Manobrista(nome,cpf));
+    }
+
+    public void registraSaida(String placa, Integer horaSaida) {
+        
+        for(Cliente cli : listaClientes){
+            if(placa.equals(cli.getPlaca())){
+                Pagamento.pagar(cli, horaSaida);
+                listaClientes.remove(cli);
+                vagasLivre++;
+            }
+        }
+        
     }
       
 }
