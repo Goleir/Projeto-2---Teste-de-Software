@@ -43,5 +43,11 @@ public class Estacionamento {
         }       
         
     }
+
+    public Integer getVagasLivre() {
+        return vagasLivre;
+    }
+    
+    
     
 }
